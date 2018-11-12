@@ -4,7 +4,7 @@ const storyWords = story.split(' ');
 const overusedWords = ['really', 'very', 'basically'];
 const unnecessaryWords = ['extremely', 'literally', 'actually' ];
 
-const betterWords = storyWords.filter(word => !unnecessaryWords.includes(word));
+let betterWords = storyWords.filter(word => !unnecessaryWords.includes(word));
 
 let sentenceCount = 0;
 
