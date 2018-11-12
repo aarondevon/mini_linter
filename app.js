@@ -4,4 +4,8 @@ const storyWords = story.split(' ');
 const overusedWords = ['really', 'very', 'basically'];
 const unnecessaryWords = ['extremely', 'literally', 'actually' ];
 
+<<<<<<< HEAD
 const betterWords = storyWords.filter(word => !unnecessaryWords.includes(word));
+=======
+const betterWords = storyWords.filter(word => !unnecessaryWords.includes(word));
+>>>>>>> 3602935fcef30d1be5cf9c93728bd3e7e7aa5232
