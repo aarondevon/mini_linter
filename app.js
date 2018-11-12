@@ -4,8 +4,67 @@ const storyWords = story.split(' ');
 const overusedWords = ['really', 'very', 'basically'];
 const unnecessaryWords = ['extremely', 'literally', 'actually' ];
 
-<<<<<<< HEAD
 const betterWords = storyWords.filter(word => !unnecessaryWords.includes(word));
-=======
-const betterWords = storyWords.filter(word => !unnecessaryWords.includes(word));
->>>>>>> 3602935fcef30d1be5cf9c93728bd3e7e7aa5232
+
+let sentenceCount = 0;
+
+function reduceOverUsedWords(arr, words) {
+  const updateStory = [];
+  counter = 0;
+	arr.forEach(function(word){
+    if (words.includes(word)) {
+        counter = counter + 1;
+        if (counter % 2 !== 0) {
+          updateStory.push(word);
+        } 
+
+      } else {
+          updateStory.push(word);
+        }
+  });
+ 
+  return updateStory;
+}
+
+function countOverUsedWords(text) {
+  let reallyCount = 0;
+	let veryCount = 0;
+	let basicallyCount = 0;
+  text.forEach(function(word) {
+    switch(word) {
+      case 'really':
+        reallyCount++;
+        break;
+      case 'very':
+        veryCount++;
+        break;
+      case 'basically':
+        basicallyCount++;
+        break;
+    } 
+	});
+  return [reallyCount, veryCount, basicallyCount];
+}
+
+let originalOverusedWords = countOverUsedWords(storyWords);
+
+
+story.split('').forEach(function(punctuation) {
+  if(punctuation === '.' || punctuation ==='!') {
+    sentenceCount++;
+  }
+});
+
+betterWords = reduceOverUsedWords(betterWords, overusedWords);
+
+let updatedOverUsedWords = countOverUsedWords(betterWords);
+
+console.log('In your original text you used:'); console.log(`${storyWords.length} words`);
+console.log(`${sentenceCount} sentences`);
+console.log(`really ${originalOverusedWords[0]} time(s), very ${originalOverusedWords[1]} time(s), and basically ${originalOverusedWords[2]} time(s)`);
+
+console.log(`\nIn the updated text you have used: ${betterWords.length} words.`);
+console.log(`${sentenceCount} sentences`);
+console.log(`really ${updatedOverUsedWords[0]} time(s), very ${updatedOverUsedWords[1]} time(s), and basically ${updatedOverUsedWords[2]} time(s)`);
+
+console.log('\n' + betterWords.join(' '));
